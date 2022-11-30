@@ -43,6 +43,11 @@ def inicializa_jogo():
     assets['coracao'] = pygame.transform.scale(assets['coracao'],(69,69))
     assets['fonte_50'] = pygame.font.Font('Fontes/ARCADE.ttf', 50)
 
+ # Carrega os sons do jogo
+    
+    mixer.music.load('biblioteca.py\musica_pygame.mp3')
+    mixer.music.set_volume(0.7)
+    mixer.music.play()
 
 # mixer.music.load()
 
