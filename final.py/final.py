@@ -42,3 +42,19 @@ def inicializa_jogo():
     assets['coracao'] = pygame.image.load('sprite/heart.png').convert_alpha()
     assets['coracao'] = pygame.transform.scale(assets['coracao'],(69,69))
     assets['fonte_50'] = pygame.font.Font('Fontes/ARCADE.ttf', 50)
+
+
+# mixer.music.load()
+
+    state = {
+        'acabou': False,
+        'maciel_pos': [50,216],
+        'maciel_speed': [0,0],
+        'gravidade': 100,
+        'pulando': False,
+        'time_update': 0,
+        'leao_pos': [1000, 250],
+        'leao_speed': [-30,0],
+        'contador_mortes': 0,
+    }
+    return window, assets, state
