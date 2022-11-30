@@ -98,3 +98,5 @@ def desenha(window: pygame.Surface, assets, state):
     else:
         window.blit(assets['personagem_maciel'], state['maciel_pos'])
     pygame.display.update()
+
+# Verifica se o personagem teve alguma colisao com a pedra ou leao 
