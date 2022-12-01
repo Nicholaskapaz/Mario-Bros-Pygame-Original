@@ -28,3 +28,17 @@ class Personagem_Maciel(pygame.sprite.Sprite):
         self.assets = assets
         self.speedx = 0
         self.speedy = 0 
+
+
+    def update(self):
+        #inicia posçao
+        posx = self.rect.x
+        posy = self.rect.y
+        #atualiza posiçao
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        #mantendo dentro da tela 
+        if self.rect.right > width:
+            self.rect.right = width
+        if self.rect.left < 0:
+            self.rect.left = 0
