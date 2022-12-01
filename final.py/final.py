@@ -157,4 +157,7 @@ def atualiza_jogo(assets, state):
     state['time_update'] = time
 
 # Funçao do Loop do jogo
-
+def loop_jogo(window, assets, state):
+    while state['acabou'] == False:
+        desenha(window, assets, state)
+        atualiza_jogo(assets, state)
