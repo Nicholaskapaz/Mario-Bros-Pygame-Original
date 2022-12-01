@@ -64,8 +64,39 @@ def inicializa_jogo():
     }
     return window, assets, state
 
-    def personagem_bateu_na_pedra(state):
-    if state['maciel_pos'][0] + 15 > 250 and state['maciel_pos'][0] < 250 + 35:
-        if state['maciel_pos'][1] + 55 > 250 and state['maciel_pos'][1] < 250 + 40:
-            return True
-    return False
+# Implementando mapa, pedra, leao, design da morte e vida, movimento
+
+def desenha(window: pygame.Surface, assets, state):
+    window.fill((0,0,0))
+    window.blit(assets['mapa'], (0, 0))
+    window.blit(assets['pedra'], (250, 250))
+    window.blit(assets['leao'], (state['leao_pos'][0], state['leao_pos'][1]))
+
+    for i in range(3):
+        if i < state['contador_mortes']:
+            window.blit(assets['caveira'], (i*69, 0))
+        else:
+            window.blit(assets['coracao'], (i*69, 0))
+
+    if state['contador_mortes'] == 3:
+            game_over_text = assets['fonte_50'].render('Morreu 3 vezes, o jogo acabou!', True, (255, 255, 255))
+            window.blit(game_over_text, (250, 40))
+            aperte_tecla_text = assets['fonte_50'].render('Aperte qualquer tecla para sair', True, (255, 255, 255))
+            window.blit(aperte_tecla_text, (250, 200))
+            pygame.display.update()
+            while True:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        state['acabou'] = True
+                        return False
+                    elif event.type == pygame.KEYDOWN:
+                        state['acabou'] = True
+                        return False
+                        
+    if state['pulando']:
+        window.blit(assets['maciel_pulando'], state['maciel_pos'])
+    else:
+        window.blit(assets['personagem_maciel'], state['maciel_pos'])
+    pygame.display.update()
+
+# Verifica se o personagem teve alguma colisao com a pedra ou leao 
