@@ -166,7 +166,7 @@ def loop_jogo(window, assets, state):
 def finaliza_jogo():
     pygame.quit()
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     window, assets, state = inicializa_jogo()
     loop_jogo(window, assets, state)
     finaliza_jogo()
