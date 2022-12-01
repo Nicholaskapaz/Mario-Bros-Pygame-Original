@@ -27,25 +27,25 @@ def inicializa_jogo():
     
     # Definindo assets
     assets = {}
-    assets['mapa'] = pygame.image.load('sprite/fundo_pygame.png').convert_alpha()
-    assets['mapa'] = pygame.transform.scale(assets['mapa'],(width,height)) 
-    assets['personagem_maciel'] = pygame.image.load('sprite/personagem_maciel.png').convert_alpha()
+    assets['mapa'] = pygame.image.load('sprites/fundo_pygame.png').convert_alpha()
+    assets['mapa'] = pygame.transform.scale(assets['mapa'],(width,height))
+    assets['personagem_maciel'] = pygame.image.load('sprites/personagem_maciel.png').convert_alpha()
     assets['personagem_maciel'] = pygame.transform.scale(assets['personagem_maciel'],(w_m,h_m))
-    assets['maciel_pulando'] = pygame.image.load('sprite/maciel_pulando_png.png').convert_alpha()
+    assets['maciel_pulando'] = pygame.image.load('sprites/maciel_pulando_png.png').convert_alpha()
     assets['maciel_pulando'] = pygame.transform.scale(assets['maciel_pulando'],(w_m,h_m))
-    assets['pedra'] = pygame.image.load('sprite/pedra.png').convert_alpha()
+    assets['pedra'] = pygame.image.load('sprites/pedra.png').convert_alpha()
     assets['pedra'] = pygame.transform.scale(assets['pedra'],(w_p,h_p))
-    assets['leao'] = pygame.image.load('sprite/leao.png').convert_alpha()
+    assets['leao'] = pygame.image.load('sprites/leao.png').convert_alpha()
     assets['leao'] = pygame.transform.scale(assets['leao'],(w_p+30,h_p+10))
-    assets['caveira'] = pygame.image.load('sprite/caveira.png').convert_alpha()
+    assets['caveira'] = pygame.image.load('sprites/caveira.png').convert_alpha()
     assets['caveira'] = pygame.transform.scale(assets['caveira'],(69,69))
-    assets['coracao'] = pygame.image.load('sprite/heart.png').convert_alpha()
+    assets['coracao'] = pygame.image.load('sprites/heart.png').convert_alpha()
     assets['coracao'] = pygame.transform.scale(assets['coracao'],(69,69))
-    assets['fonte_50'] = pygame.font.Font('Fontes/ARCADE.ttf', 50)
+    assets['fonte_50'] = pygame.font.Font('final/ARCADE.ttf', 50)
 
  # Carrega os sons do jogo
     
-    mixer.music.load('biblioteca.py\musica_pygame.mp3')
+    mixer.music.load('final/musica_pygame.mp3')
     mixer.music.set_volume(0.7)
     mixer.music.play()
 
@@ -161,3 +161,4 @@ def loop_jogo(window, assets, state):
     while state['acabou'] == False:
         desenha(window, assets, state)
         atualiza_jogo(assets, state)
+
