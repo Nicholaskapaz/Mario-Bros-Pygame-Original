@@ -162,3 +162,11 @@ def loop_jogo(window, assets, state):
         desenha(window, assets, state)
         atualiza_jogo(assets, state)
 
+# Finalizaçao do jogo 
+def finaliza_jogo():
+    pygame.quit()
+
+if _name_ == "_main_":
+    window, assets, state = inicializa_jogo()
+    loop_jogo(window, assets, state)
+    finaliza_jogo()
