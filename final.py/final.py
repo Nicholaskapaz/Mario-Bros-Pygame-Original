@@ -99,4 +99,10 @@ def desenha(window: pygame.Surface, assets, state):
         window.blit(assets['personagem_maciel'], state['maciel_pos'])
     pygame.display.update()
 
-# Verifica se o personagem teve alguma colisao com a pedra ou leao 
+# Verifica se o personagem teve alguma colisao com a pedra ou leao
+
+def personagem_bateu_na_pedra(state):
+    if state['maciel_pos'][0] + 15 > 250 and state['maciel_pos'][0] < 250 + 35:
+        if state['maciel_pos'][1] + 55 > 250 and state['maciel_pos'][1] < 250 + 40:
+            return True
+    return False
