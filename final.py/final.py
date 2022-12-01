@@ -112,3 +112,46 @@ def personagem_bateu_no_leao(state):
         if state['maciel_pos'][1] + 50 > state['leao_pos'][1] and state['maciel_pos'][1] < state['leao_pos'][1] + 20:
             return True
     return False
+
+# Atualiza o jogo, direciona a posiçao do personagem e objetos, faz as animaçoes do jogo
+
+def atualiza_jogo(assets, state):
+    if personagem_bateu_na_pedra(state) or personagem_bateu_no_leao(state):
+        state['maciel_pos'] = [50,216]
+        state['contador_mortes'] += 1
+    time = pygame.time.get_ticks()
+    tempo_por_atualizacao = (time - state['time_update']) / 1000
+    state['maciel_pos'][0] += state['maciel_speed'][0] * tempo_por_atualizacao
+    state['maciel_speed'][1] += state['gravidade'] * tempo_por_atualizacao
+    state['maciel_pos'][1] += state['maciel_speed'][1] * tempo_por_atualizacao
+    state['leao_pos'][0] += state['leao_speed'][0] * tempo_por_atualizacao
+
+    if state['maciel_pos'][1] > 216:
+        state['maciel_pos'][1] = 216
+        state['pulando'] = False
+
+    if state['leao_pos'][0] < 50:
+        state['leao_speed'][0] *= -1
+        state['leao_pos'][0] = 50
+        assets['leao'] = pygame.transform.flip(assets['leao'], True, False)
+    if state['leao_pos'][0] > 1150:
+        state['leao_speed'][0] *= -1
+        state['leao_pos'][0] = 1150
+        assets['leao'] = pygame.transform.flip(assets['leao'], True, False)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            state['acabou'] = True
+            return False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                state['maciel_speed'][0] = -100
+            if event.key == pygame.K_RIGHT:
+                state['maciel_speed'][0] = 100
+            if event.key == pygame.K_SPACE and not state['pulando']:
+                state['maciel_speed'][1] = -100
+                state['pulando'] = True
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                state['maciel_speed'][0] = 0
+    state['time_update'] = time
