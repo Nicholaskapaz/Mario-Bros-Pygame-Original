@@ -155,3 +155,6 @@ def atualiza_jogo(assets, state):
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 state['maciel_speed'][0] = 0
     state['time_update'] = time
+
+# Funçao do Loop do jogo
+
