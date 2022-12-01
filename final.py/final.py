@@ -106,3 +106,9 @@ def personagem_bateu_na_pedra(state):
         if state['maciel_pos'][1] + 55 > 250 and state['maciel_pos'][1] < 250 + 40:
             return True
     return False
+
+def personagem_bateu_no_leao(state):
+    if state['maciel_pos'][0] + 15 > state['leao_pos'][0] and state['maciel_pos'][0] < state['leao_pos'][0] + 45:
+        if state['maciel_pos'][1] + 50 > state['leao_pos'][1] and state['maciel_pos'][1] < state['leao_pos'][1] + 20:
+            return True
+    return False
